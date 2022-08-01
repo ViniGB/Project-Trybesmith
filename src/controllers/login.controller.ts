@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
-import { LoginService, userValidation } from '../services/login.service';
+import { LoginService, loginValidation } from '../services/login.service';
 
 export default class LoginController {
   constructor(private loginService = new LoginService()) { }
 
   public validateUser = async (req: Request, res: Response) => {
     const data = req.body;
-    await userValidation.validateUserBody(data);
+    await loginValidation.validateLoginBody(data);
     
     const user = await this.loginService.validateUser(data);
 
@@ -15,7 +15,7 @@ export default class LoginController {
     }
 
     const { id, username } = user;
-    const token = await userValidation.createToken(id, username);
+    const token = await loginValidation.createToken(id, username);
 
     res.status(200).json({ token });
   };

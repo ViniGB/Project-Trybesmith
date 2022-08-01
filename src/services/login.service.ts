@@ -7,8 +7,8 @@ import User from '../interfaces/user.interface';
 
 const secret: string = process.env.JWT_SECRET || 'my_secret';
 
-export const userValidation = {
-  async validateUserBody(data: Login): Promise<Login> {
+export const loginValidation = {
+  async validateLoginBody(data: Login): Promise<Login> {
     const schema = Joi.object<Login>({
       username: Joi.string().required().max(255),
       password: Joi.string().required().max(255),
