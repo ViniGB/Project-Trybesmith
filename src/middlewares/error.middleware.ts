@@ -6,8 +6,9 @@ const errors: Record<string, number> = {
 };
 
 const errorMiddleware = (err: Error, _req: Request, res: Response, _next: NextFunction) => {
-  const status = errors[err.name];
+  let status = errors[err.name];
   if (!status) return res.sendStatus(500);
+  if (!err.message.includes('required')) status = 422;
   res.status(status).json({ message: err.message });
 };
 
