@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
 import UserService from '../services/user.service';
-
-const secret: string = process.env.JWT_SECRET || 'my_secret';
+import { userValidation } from '../services/login.service';
 
 export default class ProductController {
   constructor(private userService = new UserService()) { }
@@ -12,8 +10,7 @@ export default class ProductController {
 
     const newUser = await this.userService.createUser(user);
     const { id, username } = newUser;
-    const payload = { data: { id, username } };
-    const token = jwt.sign(payload, secret);
+    const token = await userValidation.createToken(id, username);
 
     res.status(201).json({ token });
   };
