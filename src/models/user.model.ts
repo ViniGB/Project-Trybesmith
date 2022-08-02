@@ -1,6 +1,5 @@
 import { Pool, ResultSetHeader } from 'mysql2/promise';
 import User from '../interfaces/user.interface';
-// import Login from '../interfaces/login.interface';
 
 export default class UserModel {
   public connection: Pool;
@@ -20,9 +19,9 @@ export default class UserModel {
     return { id: insertId, ...user };
   }
 
-  public async getUserByName(data: User): Promise<User> {
+  public async getUserByName(data: string) {
     const result = await this.connection
-      .execute('SELECT * FROM Trybesmith.Users WHERE username=?', [data.username]);
+      .execute('SELECT * FROM Trybesmith.Users WHERE username=?', [data]);
     const [row] = result;
     const [user] = row as User[];
     return user;

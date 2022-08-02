@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken';
 import connection from '../models/connection';
 import UserModel from '../models/user.model';
 import Login from '../interfaces/login.interface';
-import User from '../interfaces/user.interface';
 
 const secret: string = process.env.JWT_SECRET || 'my_secret';
 
@@ -34,7 +33,7 @@ export class LoginService {
     this.model = new UserModel(connection);
   }
 
-  public async validateUser(user: User): Promise<User> {
+  public async validateUser(user: string) {
     const returnedUser = await this.model.getUserByName(user);
     return returnedUser;
   }

@@ -8,7 +8,7 @@ export default class LoginController {
     const data = req.body;
     await loginValidation.validateLoginBody(data);
     
-    const user = await this.loginService.validateUser(data);
+    const user = await this.loginService.validateUser(data.username);
 
     if (!user || user.password !== data.password) {
       return res.status(401).json({ message: 'Username or password invalid' });
