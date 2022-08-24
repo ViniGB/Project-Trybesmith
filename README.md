@@ -4,17 +4,17 @@
 
 ## Requirements
 
-1. Create endpoint to register products in '/products' ✔️
-2. Create endpoint to list products in '/products' ✔️
-3. Create endpoint to register users in '/users' ✔️
-4. Create endpoint to list orders in '/orders' ✔️
+1. Create endpoint to register products in `/products` ✔️
+2. Create endpoint to list products in `/products` ✔️
+3. Create endpoint to register users in `/users` ✔️
+4. Create endpoint to list orders in `/orders` ✔️
 
 ## Bonus Requirements
 
-5. Create endpoint to login user using JWT, in '/login' ✔️
+5. Create endpoint to login user using JWT, in `/login` ✔️
 6. Create product registration validations (Joi used) ✔️
 7. Create user registration validations (Joi used)
-8. Create endpoint to register order using JWT, in '/orders' ✔️
+8. Create endpoint to register order using JWT, in `/orders` ✔️
  
 ## Language and Tools
 
